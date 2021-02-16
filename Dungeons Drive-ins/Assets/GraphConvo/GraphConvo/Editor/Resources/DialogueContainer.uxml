@@ -1,0 +1,13 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="Dialogue-Container" style="width: auto; background-color: rgb(22, 22, 20); flex-direction: column; border-left-width: 1px; border-right-width: 1px; border-top-width: 2px; border-bottom-width: 1px; border-left-color: rgb(56, 56, 56); border-right-color: rgb(56, 56, 56); border-top-color: rgb(56, 56, 56); border-bottom-color: rgb(56, 56, 56);">
+        <ui:VisualElement name="Dialogue-Toolbar" style="align-items: flex-end;">
+            <ui:Button text="X" display-tooltip-when-elided="true" name="Delete-Dialogue" style="max-width: 20px; max-height: 20px;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="Character-Container" style="background-color: rgba(0, 0, 0, 0); color: rgb(56, 56, 56); flex-direction: column;">
+            <uie:ObjectField label="Character" name="CharacterObjectField" include-obsolete-values="false" style="flex-direction: column;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="Conversation-Container" style="max-width: initial;">
+            <ui:TextField picking-mode="Ignore" label="Enter Text" text="Enter text..." name="Conversation-Text" multiline="true" style="flex-direction: column; max-width: 300px; flex-wrap: wrap; white-space: normal;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

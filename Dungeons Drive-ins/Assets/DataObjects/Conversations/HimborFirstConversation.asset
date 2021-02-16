@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d185b91b3c52841a481732fb805189, type: 3}
+  m_Name: HimborFirstConversation
+  m_EditorClassIdentifier: 
+  characters: []
+  nodeLinks:
+  - baseNodeGuid: 987513fc-7a42-4222-b40b-66878582352c
+    portName: Output
+    targetNodeGuid: 44e8680a-9e0c-4094-a99c-3be9aece3139
+  - baseNodeGuid: db04488f-e485-4c3f-a569-308674187d77
+    portName: Bring me back your specialty.
+    targetNodeGuid: 12cfa11b-7a78-4620-a111-0a0a55b02fc6
+  - baseNodeGuid: db04488f-e485-4c3f-a569-308674187d77
+    portName: Yes, you can get me a...
+    targetNodeGuid: 7b0552ed-5621-42a0-a4a8-f9c61ccb47d9
+  - baseNodeGuid: db04488f-e485-4c3f-a569-308674187d77
+    portName: Just that sweet ass of yours.
+    targetNodeGuid: 031e067c-a6e9-422d-bf06-79d7069a4019
+  - baseNodeGuid: db04488f-e485-4c3f-a569-308674187d77
+    portName: No thanks, I'm good.
+    targetNodeGuid: 444b9456-8656-4fc3-8f59-b612639455a6
+  - baseNodeGuid: 44e8680a-9e0c-4094-a99c-3be9aece3139
+    portName: Output
+    targetNodeGuid: db04488f-e485-4c3f-a569-308674187d77
+  - baseNodeGuid: 12cfa11b-7a78-4620-a111-0a0a55b02fc6
+    portName: Output
+    targetNodeGuid: b814c85e-3efb-4f65-a548-513ed76e496e
+  - baseNodeGuid: 7b0552ed-5621-42a0-a4a8-f9c61ccb47d9
+    portName: Output
+    targetNodeGuid: b814c85e-3efb-4f65-a548-513ed76e496e
+  - baseNodeGuid: 031e067c-a6e9-422d-bf06-79d7069a4019
+    portName: Output
+    targetNodeGuid: b814c85e-3efb-4f65-a548-513ed76e496e
+  - baseNodeGuid: 444b9456-8656-4fc3-8f59-b612639455a6
+    portName: Output
+    targetNodeGuid: b814c85e-3efb-4f65-a548-513ed76e496e
+  convoNodeData:
+  - nodeType: 2
+    guid: db04488f-e485-4c3f-a569-308674187d77
+    position: {x: 585, y: 86}
+    dialogues: []
+  - nodeType: 1
+    guid: 12cfa11b-7a78-4620-a111-0a0a55b02fc6
+    position: {x: 1028, y: -210}
+    dialogues:
+    - conversationCharacter: {fileID: 11400000, guid: 16856349f9af9ee4389588572fb1f80b, type: 2}
+      dialogueText: Oh I'll get you the beef special, if you catch my drift.
+  - nodeType: 1
+    guid: 7b0552ed-5621-42a0-a4a8-f9c61ccb47d9
+    position: {x: 1028, y: -26}
+    dialogues:
+    - conversationCharacter: {fileID: 11400000, guid: 16856349f9af9ee4389588572fb1f80b, type: 2}
+      dialogueText: Get you a what? Slime sandwich? Bat wings? Cuddlebunny?! Get
+        you what?!
+  - nodeType: 1
+    guid: 031e067c-a6e9-422d-bf06-79d7069a4019
+    position: {x: 1033, y: 172}
+    dialogues:
+    - conversationCharacter: {fileID: 11400000, guid: 16856349f9af9ee4389588572fb1f80b, type: 2}
+      dialogueText: Oh damn, my ass is almost as sweet as your smile, and almost
+        as hard as my abs.
+  - nodeType: 1
+    guid: 444b9456-8656-4fc3-8f59-b612639455a6
+    position: {x: 1043, y: 375}
+    dialogues:
+    - conversationCharacter: {fileID: 11400000, guid: 16856349f9af9ee4389588572fb1f80b, type: 2}
+      dialogueText: Alright, I'll bring you... nothing then?
+  - nodeType: 1
+    guid: b814c85e-3efb-4f65-a548-513ed76e496e
+    position: {x: 1501, y: 112}
+    dialogues:
+    - conversationCharacter: {fileID: 11400000, guid: 16856349f9af9ee4389588572fb1f80b, type: 2}
+      dialogueText: Well, I'll get going into that deep damp cave then... Wish me
+        luck!
+  - nodeType: 1
+    guid: 44e8680a-9e0c-4094-a99c-3be9aece3139
+    position: {x: 220, y: 79}
+    dialogues:
+    - conversationCharacter: {fileID: 11400000, guid: 16856349f9af9ee4389588572fb1f80b, type: 2}
+      dialogueText: Hey bro, I'm Himbor Beefchest, I'm good a lot of stuff, that's
+        why I eat PROtine.
+    - conversationCharacter: {fileID: 11400000, guid: 16856349f9af9ee4389588572fb1f80b, type: 2}
+      dialogueText: It helps my muscles grow almost as big and hard as my... axe.
+    - conversationCharacter: {fileID: 11400000, guid: 16856349f9af9ee4389588572fb1f80b, type: 2}
+      dialogueText: Bro, want me to get you anything from the dungeon?

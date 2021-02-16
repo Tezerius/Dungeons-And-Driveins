@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c72c82120021b414bbabb9b78a42cd63, type: 3}
+  m_Name: Meal_BugsBunny
+  m_EditorClassIdentifier: 
+  mealName: Slime Soup
+  ingredients:
+  - {fileID: 11400000, guid: e1bb40d2f334bcb468196143103ad529, type: 2}
+  - {fileID: 11400000, guid: 9c8b5904e1f5dd54f9432e894a120cd0, type: 2}
+  miniGames:
+  - {fileID: 5238475200939004243, guid: d8054c6ce1cc241469d83610ba465f34, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
