@@ -38,12 +38,10 @@ public class MiniGameFlip : MiniGame
         {
             timer = 0;
             nbrFlipsDone++;
-            Debug.Log("Good flip!");
         }
         else
         {
             timer = 0;
-            Debug.Log("Flip too early!");
         }
 
         if(nbrFlipsDone >= nbrFlipsNeeded)
@@ -59,7 +57,6 @@ public class MiniGameFlip : MiniGame
         {
             if (timer >= timeBetweenFlips)
             {
-                Debug.Log("You burnt the food!");
                 MiniGameComplete(false);
             }
 

@@ -17,13 +17,11 @@ public class MiniGameHandler : MonoBehaviour
 
     public Action<bool> ActionMiniGameCompleted;
 
-    private void Start()
-    {
-        StartMiniGame();
-    }
-
     public void StartMiniGame()
     {
+        if (miniGame == null)
+            miniGame = GetComponentInChildren<MiniGame>();
+
         miniGameNameText.text = miniGameName;
 
         miniGame.ActionMiniGameCompleted += MiniGameCompletedCallback;

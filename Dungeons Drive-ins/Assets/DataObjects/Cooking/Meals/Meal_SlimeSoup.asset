@@ -16,3 +16,7 @@ MonoBehaviour:
   ingredients:
   - {fileID: 11400000, guid: e1bb40d2f334bcb468196143103ad529, type: 2}
   - {fileID: 11400000, guid: bf56beaa817bb824caa23b85e3230cb2, type: 2}
+  miniGames:
+  - {fileID: 8360895060481969238, guid: d8054c6ce1cc241469d83610ba465f34, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}

@@ -14,7 +14,7 @@ public class CookingManager : MonoBehaviour
     private SelectMealToCook selectMealToCook;
 
     private Meal mealToCook;
-    private List<MiniGame> miniGames = new List<MiniGame>();
+    private List<MiniGameHandler> miniGames = new List<MiniGameHandler>();
 
     void Start()
     {
@@ -34,6 +34,13 @@ public class CookingManager : MonoBehaviour
 
     private void InstantientMiniGames(Meal mealToCook)
     {
-        MiniGame miniGame = Instantiate(mealToCook.miniGames[0], miniGameContainer);
+        foreach (MiniGameHandler miniGame in mealToCook.miniGames)
+        {
+            if (miniGame != null)
+            {
+                MiniGameHandler miniGameHandler = Instantiate(miniGame, miniGameContainer);
+                miniGameHandler.StartMiniGame();
+            }
+        }
     }
 }

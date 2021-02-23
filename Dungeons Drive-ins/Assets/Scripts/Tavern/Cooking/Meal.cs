@@ -7,5 +7,5 @@ public class Meal : ScriptableObject
 {
     public string mealName;
     public List<Ingredient> ingredients;
-    public MiniGame[] miniGames = new MiniGame[3];
+    public MiniGameHandler[] miniGames = new MiniGameHandler[3];
 }

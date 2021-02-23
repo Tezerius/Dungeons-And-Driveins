@@ -1385,6 +1385,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delayBeforeNewConvo: 2
+  characterTypingSpeed: 0.1
   dialogueBoxManager: {fileID: 968672118}
   speaker: {fileID: 1394624}
   conversationBox: {fileID: 1622421629}
