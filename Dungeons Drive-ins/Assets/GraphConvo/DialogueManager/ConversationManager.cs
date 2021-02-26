@@ -8,17 +8,18 @@ using System;
 
 public class ConversationManager : MonoBehaviour
 {
-    [Header("ConversationSettings")]
+    [Header("Conversation Settings")]
+    [SerializeField] bool clickToContinue = true;
     [SerializeField] float delayBeforeNewConvo = 2f;
-    [SerializeField] float characterTypingSpeed = 0.1f;
 
     [Header("Components")]
     [SerializeField] DialogueBoxManager dialogueBoxManager;
-    [SerializeField] Text speaker;
-    [SerializeField] Text conversationBox;
     [Header("Choice")]
     [SerializeField] Button choicePrefab;
     [SerializeField] Transform buttonContainer;
+
+    [Header("Continue Button")]
+    [SerializeField] Button continueButton;
 
     private CharacterImageManager characterImageManager;
 
@@ -36,6 +37,7 @@ public class ConversationManager : MonoBehaviour
 
     public void StartConversation(ConversationContainer newConversation)
     {
+        continueButton.onClick.AddListener(() => ContinueButtonCallback());
         currentConversation = newConversation;
         //Procede to the first node in the graph.
         ContinueToNextNode(newConversation.nodeLinks.First().targetNodeGuid);
@@ -45,8 +47,16 @@ public class ConversationManager : MonoBehaviour
     {
         if (guid == "")
         {
-            StartCoroutine(Utility.WaitAndExecuteFunction(EndConversation, 2f));
-            return;
+            if(clickToContinue)
+            {
+                EndConversation();
+                return;
+            }
+            else
+            {
+                StartCoroutine(Utility.WaitAndExecuteFunction(EndConversation, 2f));
+                return;
+            }
         }
         ConvoNodeData convoNodeData = currentConversation.convoNodeData.Find(x => x.guid == guid);
         switch (convoNodeData.nodeType)
@@ -68,63 +78,38 @@ public class ConversationManager : MonoBehaviour
     private void EndConversation()
     {
         characterImageManager.SlideNPCImage(null, false);
-        StartCoroutine(dialogueBoxManager.SlideChatBox(false));
+        dialogueBoxManager.HideDialogueBox();
+        continueButton.onClick.RemoveAllListeners();
+    }
+
+    private void ContinueButtonCallback()
+    {
+        dialogueBoxManager.Continue();
     }
 
     #region Handle Dialogue Nodes
     private void HandleDialogueNode(ConvoNodeData convoNodeData)
     {
-        StartCoroutine(ShowDialogues(convoNodeData));
+        dialogueBoxManager.ShowDialogues(convoNodeData, clickToContinue, (Dialogue dialogue) => OnNewDialogueStartedCallback(dialogue), (ConvoNodeData x) => OnDialoguesFinishedCallback(x));
     }
 
-    IEnumerator ShowDialogues(ConvoNodeData convoNodeData)
+    private void OnNewDialogueStartedCallback(Dialogue dialogue)
     {
-        if (PreviousNodeData != null)
-            if (PreviousNodeData.nodeType == NodeType.Dialogue)
-                yield return new WaitForSeconds(delayBeforeNewConvo);
+        characterImageManager.SlideNPCImage(dialogue.conversationCharacter.characterImg);
+    }
 
-        if (!dialogueBoxManager.ConversationBox.gameObject.activeSelf)
-        {
-            StartCoroutine(dialogueBoxManager.SlideChatBox(true));
-        }
-
-        for (int i = 0; i < convoNodeData.dialogues.Count; i++)
-        {
-            Dialogue currentDialogue = convoNodeData.dialogues[i];
-            speaker.text = currentDialogue.conversationCharacter.characterName;
-            characterImageManager.SlideNPCImage(currentDialogue.conversationCharacter.characterImg);
-
-            yield return new WaitUntil(() => dialogueBoxManager.slidingChatbox == false);
-
-            StartCoroutine(ShowDialogueText(currentDialogue.dialogueText));
-            yield return new WaitUntil(() => showDialogueTextRoutineRunning == false);
-            if (i != convoNodeData.dialogues.Count - 1)
-                yield return new WaitForSeconds(delayBeforeNewConvo);
-        }
-
+    private void OnDialoguesFinishedCallback(ConvoNodeData convoNodeData)
+    {
         NodeLinkData nodeLinkData = currentConversation.nodeLinks.Find(x => x.baseNodeGuid == convoNodeData.guid);
         if (nodeLinkData != null)
             ContinueToNextNode(nodeLinkData.targetNodeGuid);
         else
             ContinueToNextNode("");
     }
+#endregion
 
-    private bool showDialogueTextRoutineRunning;
-    IEnumerator ShowDialogueText(string dialogueText)
-    {
-        showDialogueTextRoutineRunning = true;
-        conversationBox.text = "";
-        foreach (char letter in dialogueText)
-        {
-            conversationBox.text += letter;
-            yield return new WaitForSeconds(characterTypingSpeed);
-        }
-        showDialogueTextRoutineRunning = false;
-    }
-    #endregion
-
-    #region Handle Choice Buttons
-    private void HandleChoiceNode(ConvoNodeData convoNodeData)
+#region Handle Choice Buttons
+private void HandleChoiceNode(ConvoNodeData convoNodeData)
     {
         var choices = currentConversation.nodeLinks.Where(x => x.baseNodeGuid == convoNodeData.guid);
         foreach (NodeLinkData choice in choices)
